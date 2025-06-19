@@ -1,19 +1,11 @@
 pipeline{
     agent any 
     stages{
-        stage('Build'){
+        stage('DockerBuildPush'){
             steps{
-                echo "This is Build stage"
-            }
-        }
-        stage('Docker'){
-            steps{
-                echo "This is docker stage"
-            }
-        }
-        stage('k8sdeploy'){
-            steps{
-                echo "This is k8s file"
+                sh "docker pull nginx"
+                echo "******printing the images********"
+                sh 'docker images'
             }
         }
     }
